@@ -27,26 +27,23 @@ function createOptions(arrayOptions) {
 }
 
 
-function createLink() {
-
-}
-
-function createImg() {
-
-}
-
 
 let header = createTagElement('header', 'header');
+let headerInner = createTagElement("header-inner");
 
-header.appendChild(createTagElement("header-inner"))
-    .appendChild(createTagElement("header-nav", "nav"))
+header.appendChild(headerInner)
+    .appendChild(createTagElement("header__nav", "nav"))
     .append(
         createTagElement("header__link header__link-search", "a", "Search"),
         createTagElement("header__link header__link-my-movies", "a", "My Movies"));
 
-let headerUser = createTagElement('header__user');
-headerUser.append(createTagElement("header__username", "span", "Dima Skibin"),
-    createTagElement("header__user-avatar", "img"));
+
+headerInner.appendChild(createTagElement('header__user'))
+    .append(createTagElement("header__username", "span", "Dima Skibin"),
+        createTagElement("header__user-avatar", "img","","src","./img/avatar.jpg"));
+
+
+
 
 let container = createTagElement("container");
 let mainContainer = createTagElement("main-container", "main");
@@ -104,16 +101,16 @@ for (let i = 0; i < 4; i++) {
         );
 }
 
-let navBtns=[];
-for(let i = 0;i<6;i++) {
-    navBtns.push(createTagElement("nav-btn page-num","div",i.toString()))
+let navBtns = [];
+for (let i = 0; i < 6; i++) {
+    navBtns.push(createTagElement("nav-btn page-num", "div", i.toString()))
 }
 
 mainContainer.appendChild(createTagElement("nav-wrapper"))
     .appendChild(createTagElement("nav-pages"))
-    .append(createTagElement("nav-btn prev-page","div","<<"),
-    ...navBtns,
-    createTagElement("nav-btn next-page","div",">>"));
+    .append(createTagElement("nav-btn prev-page", "div", "<<"),
+        ...navBtns,
+        createTagElement("nav-btn next-page", "div", ">>"));
 
-document.body.append(header, headerUser, container);
+document.body.append(header, container);
 
